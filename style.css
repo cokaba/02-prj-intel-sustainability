@@ -66,6 +66,45 @@ section > div {
 	padding: 24px;
 }
 
+/* Show the first four card descriptions when their images are hovered. */
+.timeline-card {
+	background-color: transparent;
+	overflow: hidden;
+	padding: 0;
+	transition: transform 0.25s ease;
+}
+
+.timeline-card:hover,
+.timeline-card:focus {
+	transform: translateY(-10px);
+}
+
+.timeline-card img {
+	display: block;
+	height: 190px;
+	object-fit: cover;
+	width: 100%;
+}
+
+.timeline-card .card-content {
+	background-color: #ffffff;
+	max-height: 0;
+	opacity: 0;
+	overflow: hidden;
+	padding: 0 24px;
+	transition: max-height 0.3s ease, opacity 0.3s ease, padding 0.3s ease;
+	visibility: hidden;
+}
+
+.timeline-card:hover .card-content,
+.timeline-card:focus .card-content {
+	max-height: 300px;
+	opacity: 1;
+	padding-bottom: 24px;
+	padding-top: 24px;
+	visibility: visible;
+}
+
 section h2 {
 	color: #0071c5;
 	margin-top: 0;
