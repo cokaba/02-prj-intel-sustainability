@@ -1,6 +1,19 @@
 /* Set the main page background and basic text styles. */
 body {
 	background-color: #0071c5;
+	background-image:
+		linear-gradient(
+			to bottom,
+			rgba(0, 113, 197, 0.92) 0%,
+			rgba(0, 113, 197, 0.78) 30%,
+			rgba(0, 113, 197, 0.92) 70%,
+			rgba(0, 113, 197, 1) 100%
+		),
+		url("img/windmills.jpg");
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
 	color: #ffffff;
 	font-family: Arial, sans-serif;
 	margin: 0;
@@ -33,6 +46,7 @@ body {
 header {
 	padding: 64px 24px 48px;
 	text-align: center;
+	font-size: 1.2rem;
 }
 
 header div {
@@ -47,36 +61,46 @@ header p {
 
 /* Arrange each timeline item as a card. */
 section {
+	align-items: flex-start;
 	display: flex;
-	flex-wrap: wrap;
+	flex-wrap: nowrap;
 	gap: 24px;
-	justify-content: center;
+	justify-content: flex-start;
 	margin: 0 auto;
 	max-width: 1100px;
+	overflow-x: auto;
 	padding: 0 24px 40px;
+	scroll-snap-type: x proximity;
+	-webkit-overflow-scrolling: touch;
 }
 
 section > div {
-	background-color: #ffffff;
+	scroll-snap-align: start;
+}
+
+section > div {
+	background-color: #071525;
 	border-radius: 8px;
 	box-sizing: border-box;
-	color: #16324f;
+	color: white;
 	flex: 1 1 280px;
 	max-width: 340px;
+	min-width: 280px;
 	padding: 24px;
 }
 
 /* Show the first four card descriptions when their images are hovered. */
+/* Show the first four card descriptions when their images are hovered. */
 .timeline-card {
-	background-color: transparent;
 	overflow: hidden;
 	padding: 0;
-	transition: transform 0.25s ease;
+	transform: scale(1);
+	transition: transform 0.25s ease, translate 0.25s ease;
 }
 
 .timeline-card:hover,
 .timeline-card:focus {
-	transform: translateY(-10px);
+	transform: scale(1.03) translateY(-8px);
 }
 
 .timeline-card img {
@@ -86,8 +110,14 @@ section > div {
 	width: 100%;
 }
 
+.timeline-card:nth-child(7) img {
+	height: 190px;
+	object-fit: contain;
+	width: 100%;
+	margin: 0 auto;
+}
+
 .timeline-card .card-content {
-	background-color: #ffffff;
 	max-height: 0;
 	opacity: 0;
 	overflow: hidden;
@@ -111,10 +141,27 @@ section h2 {
 }
 
 section h3 {
+	color: #0ba1b8;
 	margin-bottom: 12px;
 }
 
+section p {
+	color: lightyellow;
+}
+
+.learn-more {
+	color: #0ba1b8;
+	display: inline-block;
+	font-weight: bold;
+	margin-top: 12px;
+	text-decoration: underline;
+}
+
 body > p {
+	clear: both;
+	display: block;
+	margin: 0 auto;
+	max-width: 520px;
 	padding: 0 24px 32px;
 	text-align: center;
 }
@@ -128,7 +175,37 @@ body > p {
 		padding-top: 44px;
 	}
 
+	header h1 {
+		font-size: 2rem;
+	}
+
+	header p {
+		font-size: 1rem;
+		line-height: 1.5;
+	}
+
 	section {
+		flex-wrap: wrap;
+		gap: 16px;
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+
+	section > div {
+		flex-basis: 100%;
+		max-width: 100%;
+	}
+
+	.timeline-card {
+		transform: none;
+	}
+
+	.timeline-card:hover,
+	.timeline-card:focus {
+		transform: scale(1.01);
+	}
+
+	body > p {
 		padding-left: 20px;
 		padding-right: 20px;
 	}
